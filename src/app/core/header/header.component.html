@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a routerLink="/home" class="navbar-brand">Recipe Book</a>
+            </div>
+    
+            <div class="collapse navbar-collapse">
+                   <ul class="nav navbar-nav" >
+                       <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
+                       <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
+                   </ul>
+    
+                   <ul class="nav navbar-nav navbar-right">
+
+                        <ng-template [ngIf]="!(currentUserState |async)">
+ 
+                            <li><a routerLink="/signup">Register</a></li>
+                            <li><a routerLink="/signin">Login</a></li>
+                        </ng-template>
+
+                        <ng-template [ngIf]="(currentUserState |async) && ( isUserNotNew() )">
+                            
+                            <li class="dropdown" appDropdown > 
+                                <a  class="dropdown-toggle" role="button">{{  getUserName() }}<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a style="cursor:pointer;" routerLink="/profile/edit">Edit Profile</a></li>
+                                    <li><a style="cursor:pointer;" (click)="onLogout()">Logout</a></li>
+                                </ul>    
+                            </li>
+
+                            <li> <img 
+                                [src]="authService.getCurrentUserImagePath()" 
+                                [alt]="authService.getCurrentUserName()" 
+                                class="img-responsive"
+                                style="width:60px;height:50px; border-radius: 50%;">
+                            </li>
+                            
+                            <li class="dropdown" appDropdown > 
+                                <a  class="dropdown-toggle" role="button">Manage<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a style="cursor:pointer;" (click)="onSaveData()">Save Date</a></li>
+                                    <li><a style="cursor:pointer;" (click)="onFetchData()">Fetch Date</a></li>
+                                </ul>    
+                            </li>
+                        </ng-template>
+                        
+                    </ul>
+            </div>
+        </div>
+    </nav>

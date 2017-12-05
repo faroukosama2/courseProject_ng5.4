@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form (ngSubmit)="submit()" #form="ngForm">
+            
+              <div class="form-group" >
+                <label for="displayedName">Name</label>
+                <input class="form-control" 
+                type="text" 
+                id="displayedName" 
+                name="displayedName"
+                placeholder="Profile name only you cann't signin with it !"
+                required 
+                [ngModel]="defaultName">
+              </div>
+  
+              <div class="form-group" >
+                <label for="imagePath">Profile Picture</label>
+                <input class="form-control" 
+                type="text" 
+                id="imagePath" 
+                name="imagePath"
+                required 
+                [ngModel]="defaultImagePath">
+              </div>
+            
+              <div class="form-group">
+                    <img [src]="form.value.imagePath" [alt]="form.value.displayedName" class="img-responsive">
+              </div>
+        
+
+              <button class="btn btn-primary" type="submit">{{newMode? 'Create':'Update'}}</button>
+
+
+          </form>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

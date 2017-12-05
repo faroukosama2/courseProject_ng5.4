@@ -1,0 +1,15 @@
+<ng-template [ngIf]="(currentUserState |async)">
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-success" 
+            (click)="onNewRecipe()">New Recipe</button>
+        </div>
+    </div>
+    <hr>
+</ng-template>
+<div class="row">
+        <div class="col-xs-12">
+              <app-recipe-item *ngFor="let recipe of recipes; let i = index" 
+              [recipeEl]="recipe" [recipeElId]="i+1"></app-recipe-item>
+        </div>
+</div>
