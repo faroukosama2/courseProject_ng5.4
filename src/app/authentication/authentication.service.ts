@@ -106,7 +106,7 @@ export class AuthenticationService
         (
             (response) =>
             {
-                window.location.reload();   
+                //window.location.reload();   
                 this.router.navigate(['/']);   
             }
         ).
